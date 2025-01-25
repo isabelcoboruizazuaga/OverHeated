@@ -12,11 +12,12 @@ public class SingleIngredientScript : MonoBehaviour
         y = _y;
     }
 
-    public void SetIngredient(bool _ingredient,Sprite sprite) { 
+    public void SetIngredient(bool _ingredient,GameObject platformGO) { 
         ingredient = _ingredient;
         if(ingredient)
         {
-            gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
+            Instantiate(platformGO,transform);
+            //gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
         }
     }
 

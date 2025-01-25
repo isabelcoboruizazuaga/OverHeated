@@ -15,7 +15,7 @@ public class IngredientManager : MonoBehaviour
 
     [SerializeField] private int platformAmount;
 
-    [SerializeField] Sprite[] ingredientsSprite;
+    [SerializeField] GameObject[] ingredientsSprite;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class IngredientManager : MonoBehaviour
        SetIngredients();
     }
 
-    private Sprite GetRandomSprite()
+    private GameObject GetRandomPlatform()
     {
         return ingredientsSprite[Random.Range(0, ingredientsSprite.Length)];
     }
@@ -57,9 +57,9 @@ public class IngredientManager : MonoBehaviour
             int randomX = Random.Range(0, width);
             int randomY = Random.Range(0, height);
 
-            if (CheckAround(randomX, randomY) <2) //si es 2 o más hay al menos dos ingredientes en línea
+            if (CheckAround(randomX, randomY) <2 && !map[randomX, randomY].GetIngredient() ) //si es 2 o más hay al menos dos ingredientes en línea
             {
-                map[randomX, randomY].SetIngredient(true, GetRandomSprite());
+                map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
             }
 
             else i--;
@@ -100,8 +100,6 @@ public class IngredientManager : MonoBehaviour
 
             //if (y-1 < (height - 2)                    /**/&& map[x, y + 2].GetIngredient()) aux++;
         }
-
-        if (map[x, y].GetIngredient()) aux++;
 
         return aux;
 
