@@ -13,11 +13,9 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] int width = 4, height = 3;
     private static SingleIngredientScript[,] map;
 
-    [SerializeField] private int bombAmount;
+    [SerializeField] private int platformAmount;
 
-
-
-
+    [SerializeField] Sprite[] ingredientsSprite;
 
     private void Awake()
     {
@@ -44,10 +42,15 @@ public class IngredientManager : MonoBehaviour
        SetIngredients();
     }
 
+    private Sprite GetRandomSprite()
+    {
+        return ingredientsSprite[Random.Range(0, ingredientsSprite.Length)];
+    }
+
    private void SetIngredients()
     {
         int aux = 0; 
-        for (int i = 0; i < 8 && aux < 1000; i++)
+        for (int i = 0; i < platformAmount && aux < 1000; i++)
         {
             aux++;
 
@@ -56,7 +59,7 @@ public class IngredientManager : MonoBehaviour
 
             if (CheckAround(randomX, randomY) <2) //si es 2 o más hay al menos dos ingredientes en línea
             {
-                map[randomX, randomY].SetIngredient(true);
+                map[randomX, randomY].SetIngredient(true, GetRandomSprite());
             }
 
             else i--;
@@ -67,76 +70,42 @@ public class IngredientManager : MonoBehaviour
     {
         int aux = 0;
         //casillas de la izquierda
-        if (x > 0                               /**/&& map[x - 1, y].GetBomb())
+        if (x > 0                               /**/&& map[x - 1, y].GetIngredient())
         {
             aux++;
 
-            if ((x-1) > 1                               /**/&& map[x - 2, y].GetBomb()) aux++;
+            if ((x-1) > 1                               /**/&& map[x - 2, y].GetIngredient()) aux++;
         }
 
 
         //casillas de la derecha
-        if (x < (width - 1)                     /**/&& map[x + 1, y].GetBomb())
+        if (x < (width - 1)                     /**/&& map[x + 1, y].GetIngredient())
         {
             aux++;
 
-            if ((x + 1) < (width - 2)                     /**/&& map[x + 2, y].GetBomb()) aux++;
+            if ((x + 1) < (width - 2)                     /**/&& map[x + 2, y].GetIngredient()) aux++;
         }
 
         //esa linea vertical
-        if (y > 0                               /**/&& map[x, y - 1].GetBomb()) {
+        if (y > 0                               /**/&& map[x, y - 1].GetIngredient()) {
             aux++;
 
-            if (y-1 > 0                               /**/&& map[x, y - 2].GetBomb()) aux++;
+            if (y-1 > 0                               /**/&& map[x, y - 2].GetIngredient()) aux++;
         }
 
 
-        if (y < (height - 1)                    /**/&& map[x, y + 1].GetBomb())
+        if (y < (height - 1)                    /**/&& map[x, y + 1].GetIngredient())
         {
             aux++;
 
-            if (y-1 < (height - 2)                    /**/&& map[x, y + 2].GetBomb()) aux++;
+            //if (y-1 < (height - 2)                    /**/&& map[x, y + 2].GetIngredient()) aux++;
         }
 
-        if (map[x, y].GetBomb()) aux++;
+        if (map[x, y].GetIngredient()) aux++;
 
         return aux;
 
     }
-    public int BombsAround(int x, int y)
-    {
-        int aux = 0;
-        //casillas de la izquierda
-        if (x > 0                               /**/&& map[x - 1, y].GetBomb()) aux++;
-        if (x > 0 && y > 0                      /**/&& map[x - 1, y - 1].GetBomb()) aux++;
-        if (x > 0 && y < (height - 1)           /**/&& map[x - 1, y + 1].GetBomb()) aux++;
-
-        //casillas de la derecha
-        if (x < (width - 1) && y > 0            /**/&& map[x + 1, y - 1].GetBomb()) aux++;
-        if (x < (width - 1) && y < (height - 1) /**/&& map[x + 1, y + 1].GetBomb()) aux++;
-        if (x < (width - 1)                     /**/&& map[x + 1, y].GetBomb()) aux++;
-
-        //esa linea vertical
-        if (y > 0                               /**/&& map[x, y - 1].GetBomb()) aux++;
-        if (y < (height - 1)                    /**/&& map[x, y + 1].GetBomb()) aux++;
-        if (map[x, y].GetBomb()) aux++;
-
-        return aux;
-    }
-
-    void SetBombs()
-    {
-        int aux = 0;
-        for (int i = 0; i < bombAmount && aux < 1000; i++)
-        {
-            aux++;
-
-            int randomX = Random.Range(0, width);
-            int randomY = Random.Range(0, height);
-
-            if (!map[randomX, randomY].GetBomb()) map[randomX, randomY].SetIngredient(true);
-            else i--;
-        }
-    }
+    
 
 }
