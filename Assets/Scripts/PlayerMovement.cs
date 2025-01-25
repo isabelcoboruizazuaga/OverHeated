@@ -24,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Jump();
+        
     }
+
     void FixedUpdate()
     {
         MoveActionP1();       
@@ -41,13 +43,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKey(KeyCode.Space) && jump)
+        if (Input.GetKey(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0) && jump)
         {
             jump = false;
             rb2D.AddForce(Vector2.up * jumpForce);
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && doubleJump)
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0) && doubleJump)
         {
             doubleJump = false;
             jump = true;
