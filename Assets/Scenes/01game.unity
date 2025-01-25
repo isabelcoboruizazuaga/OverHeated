@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8210243545019268070, guid: b92c9acf1822be64bbd77f2535333aa2, type: 3}
       propertyPath: jumpForce
-      value: 1
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1956518167492775591, guid: 1114885984dcd364586da8b330713d74, type: 3}
       propertyPath: jumpForce
-      value: 1
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1956518167492775591, guid: 1114885984dcd364586da8b330713d74, type: 3}
       propertyPath: smoothTime

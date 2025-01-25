@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  smoothTime: 0
-  jumpForce: 300
+  smoothTime: 0.1
+  jumpForce: 3000
   jump: 1
 --- !u!1 &2496797113934769651
 GameObject:

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6797651019794090980}
   - component: {fileID: 592904781168932457}
+  - component: {fileID: 889331663694697443}
   m_Layer: 0
   m_Name: collider_below
   m_TagString: Untagged
@@ -62,7 +63,7 @@ PolygonCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -78,12 +79,29 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.18625394, y: -0.4620431}
       - {x: 0.32834506, y: -0.37179372}
-      - {x: 0.4251823, y: -0.25807786}
-      - {x: -0.42055652, y: -0.27030757}
       - {x: -0.31996074, y: -0.38117546}
       - {x: -0.17987992, y: -0.46434623}
       - {x: 0.012396276, y: -0.49734822}
   m_UseDelaunayMesh: 0
+--- !u!251 &889331663694697443
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899104384342489446}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 180
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &4799048346430978217
 GameObject:
   m_ObjectHideFlags: 0
