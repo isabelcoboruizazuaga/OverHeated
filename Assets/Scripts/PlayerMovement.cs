@@ -43,13 +43,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0) && jump)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && jump)
         {
             jump = false;
             rb2D.AddForce(Vector2.up * jumpForce);
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0) && doubleJump)
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0)) && doubleJump)
         {
             doubleJump = false;
             jump = true;
