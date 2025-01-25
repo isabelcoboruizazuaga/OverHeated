@@ -78,11 +78,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.18625394, y: -0.4620431}
       - {x: 0.32834506, y: -0.37179372}
-      - {x: 0.4248231, y: -0.2561146}
-      - {x: 0.48344344, y: -0.09019279}
-      - {x: -0.032965343, y: -0.090842485}
-      - {x: -0.48654923, y: -0.09255698}
-      - {x: -0.42005202, y: -0.27038318}
+      - {x: 0.4251823, y: -0.25807786}
+      - {x: -0.42055652, y: -0.27030757}
       - {x: -0.31996074, y: -0.38117546}
       - {x: -0.17987992, y: -0.46434623}
       - {x: 0.012396276, y: -0.49734822}
@@ -217,7 +214,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4799048346430978217}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -225,7 +222,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9c12be8cbdb72ef4bb5e86f46b40f685, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
