@@ -43,13 +43,13 @@ public class Player2Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKey(KeyCode.Return) && jump)
+        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter) && jump)
         {
             jump = false;
             rb2D.AddForce(Vector2.up * jumpForce);
         }
 
-        if (Input.GetKeyUp(KeyCode.Return) && doubleJump)
+        if (Input.GetKeyUp(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter) && doubleJump)
         {
             doubleJump = false;
             jump = true;
