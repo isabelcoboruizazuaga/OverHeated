@@ -16,10 +16,13 @@ public class Player2Movement : MonoBehaviour
     private Vector2 dampVelocity;
     private float p2horizontalInput;
 
+    Animator player_Animator;
+
 
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        player_Animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -47,6 +50,7 @@ public class Player2Movement : MonoBehaviour
         {
             jump = false;
             rb2D.AddForce(Vector2.up * jumpForce);
+            player_Animator.SetTrigger("jump");
         }
 
         if ((Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Joystick2Button0) || Input.GetKeyUp(KeyCode.KeypadEnter)) && doubleJump)
