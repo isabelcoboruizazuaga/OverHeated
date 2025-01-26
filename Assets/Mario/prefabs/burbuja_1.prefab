@@ -78,10 +78,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.18625394, y: -0.4620431}
-      - {x: 0.32834506, y: -0.37179372}
-      - {x: -0.31996074, y: -0.38117546}
+      - {x: 0.30590215, y: -0.3910398}
+      - {x: 0.3674216, y: -0.31789517}
+      - {x: -0.3765544, y: -0.31514972}
+      - {x: -0.30563018, y: -0.3908555}
       - {x: -0.17987992, y: -0.46434623}
-      - {x: 0.012396276, y: -0.49734822}
+      - {x: 0.012396276, y: -0.49734825}
   m_UseDelaunayMesh: 0
 --- !u!251 &889331663694697443
 PlatformEffector2D:
@@ -179,7 +181,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 7744e1bf19a4ca04081357c4c483e6ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -206,8 +208,10 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"velocity_y","value":{"$content":0.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"life_time","value":{"$content":100000000000000.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
-    _objectReferences: []
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"death_sprite","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.Sprite,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 21300000, guid: 3266a22bc82560647bca63809a25ecfe, type: 3}
 --- !u!114 &5840606272699255679
 MonoBehaviour:
   m_ObjectHideFlags: 0
