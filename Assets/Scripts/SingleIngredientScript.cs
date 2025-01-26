@@ -7,6 +7,9 @@ public class SingleIngredientScript : MonoBehaviour
     public GameObject platformGO;
     GameObject platformSpawn;
 
+    [Header("Sonido")]
+    [SerializeField] private AudioSource myAudio;
+
     private void Start()
     {
         platformSpawn = GameObject.Find("IngredientSpawner");
@@ -32,6 +35,10 @@ public class SingleIngredientScript : MonoBehaviour
 
 
     }
+    public void PlaySound()
+    {
+        myAudio.Play();
+    }
 
     public void SetIngredient(bool _ingredient, GameObject _platformGO)
     {
@@ -42,6 +49,7 @@ public class SingleIngredientScript : MonoBehaviour
             {
                 platformGO = _platformGO;
                 Instantiate(_platformGO, transform);
+                myAudio = _platformGO.GetComponent<AudioSource>();
             }
         }
     }
@@ -65,6 +73,7 @@ public class SingleIngredientScript : MonoBehaviour
                 ingredient = true;
                 platformGO = _platfomGo;
                 Instantiate(_platfomGo, transform);
+                myAudio = _platfomGo.GetComponent<AudioSource>();
             }
         }
     }

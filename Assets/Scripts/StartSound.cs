@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StartSound : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Sonido")]
+    [SerializeField] private AudioSource StartAudio;
+
+    private void Start()
     {
-        
+        StartCoroutine(AudioStart());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator  AudioStart()
     {
-        
+        yield return new WaitForSeconds(20);
+        StartAudio.Play();
     }
 }

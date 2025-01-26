@@ -77,6 +77,7 @@ public class IngredientManager : MonoBehaviour
             if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient())
             {
                 map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
+                map[randomX, randomY].PlaySound();
             }
 
             else i--;
