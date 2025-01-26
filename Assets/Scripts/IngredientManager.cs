@@ -40,6 +40,7 @@ public class IngredientManager : MonoBehaviour
         SetIngredients();
     }
 
+
     private GameObject GetRandomPlatform()
     {
         return ingredientsSprite[Random.Range(0, ingredientsSprite.Length)];
@@ -62,6 +63,37 @@ public class IngredientManager : MonoBehaviour
 
             else i--;
         }
+    }
+    public void Reafill()
+    {
+        int aux = 0;
+        for (int i = 0; i < 2 && aux < 3; i++)
+        {
+            aux++;
+
+            int randomX = Random.Range(0, width);
+            int randomY = Random.Range(0, 2);
+
+            if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient())
+            {
+                map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
+            }
+
+            else i--;
+        }
+    }
+
+    
+    public void Refill()
+    {
+        int randomX = Random.Range(0, width);
+        int randomY = Random.Range(0, 2);
+
+        if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient()) //si es 2 o más hay al menos dos ingredientes en línea
+        {
+            map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
+        }
+
     }
 
     private int CheckAround(int x, int y)
@@ -99,6 +131,7 @@ public class IngredientManager : MonoBehaviour
 
             //if (y-1 < (height - 2)                    /**/&& map[x, y + 2].GetIngredient()) aux++;
         }
+        if (map[x, y].GetIngredient()) aux=aux + 5;
 
         return aux;
 
