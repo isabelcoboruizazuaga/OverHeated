@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class IngredientManager : MonoBehaviour
 {
@@ -9,6 +6,7 @@ public class IngredientManager : MonoBehaviour
 
     [SerializeField] private GameObject buttonObject;
     [SerializeField] private Transform panelGame;
+    [SerializeField] private Transform positionCamera;
 
     [SerializeField] int width = 4, height = 3;
     private static SingleIngredientScript[,] map;
@@ -27,7 +25,7 @@ public class IngredientManager : MonoBehaviour
     void Start()
     {
         int aux = 0;
-        SingleIngredientScript[] ingredientScript= gameObject.GetComponentsInChildren<SingleIngredientScript>();
+        SingleIngredientScript[] ingredientScript = gameObject.GetComponentsInChildren<SingleIngredientScript>();
 
         for (int y = 0; y < height; y++)
         {
@@ -39,7 +37,7 @@ public class IngredientManager : MonoBehaviour
                 aux++;
             }
         }
-       SetIngredients();
+        SetIngredients();
     }
 
     private GameObject GetRandomPlatform()
@@ -47,9 +45,9 @@ public class IngredientManager : MonoBehaviour
         return ingredientsSprite[Random.Range(0, ingredientsSprite.Length)];
     }
 
-   private void SetIngredients()
+    private void SetIngredients()
     {
-        int aux = 0; 
+        int aux = 0;
         for (int i = 0; i < platformAmount && aux < 1000; i++)
         {
             aux++;
@@ -57,7 +55,7 @@ public class IngredientManager : MonoBehaviour
             int randomX = Random.Range(0, width);
             int randomY = Random.Range(0, height);
 
-            if (CheckAround(randomX, randomY) <2 && !map[randomX, randomY].GetIngredient() ) //si es 2 o más hay al menos dos ingredientes en línea
+            if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient()) //si es 2 o más hay al menos dos ingredientes en línea
             {
                 map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
             }
@@ -74,7 +72,7 @@ public class IngredientManager : MonoBehaviour
         {
             aux++;
 
-            if ((x-1) > 1                               /**/&& map[x - 2, y].GetIngredient()) aux++;
+            if ((x - 1) > 1                               /**/&& map[x - 2, y].GetIngredient()) aux++;
         }
 
 
@@ -87,10 +85,11 @@ public class IngredientManager : MonoBehaviour
         }
 
         //esa linea vertical
-        if (y > 0                               /**/&& map[x, y - 1].GetIngredient()) {
+        if (y > 0                               /**/&& map[x, y - 1].GetIngredient())
+        {
             aux++;
 
-            if (y-1 > 0                               /**/&& map[x, y - 2].GetIngredient()) aux++;
+            if (y - 1 > 0                               /**/&& map[x, y - 2].GetIngredient()) aux++;
         }
 
 
@@ -104,6 +103,30 @@ public class IngredientManager : MonoBehaviour
         return aux;
 
     }
-    
+
+    public void DownIngredients()
+    {
+        transform.position = positionCamera.position;
+
+        //select de los ingredientes. Se bajan los de y0 a y1 y los de y1 a y2, y2 se borra
+        //third row
+        map[0, 2].ChangeIngredient(map[0, 1].GetIngredient(), map[0, 1].platformGO);
+        map[1, 2].ChangeIngredient(map[1, 1].GetIngredient(), map[1, 1].platformGO);
+        map[2, 2].ChangeIngredient(map[2, 1].GetIngredient(), map[2, 1].platformGO);
+        map[3, 2].ChangeIngredient(map[3, 1].GetIngredient(), map[3, 1].platformGO);
+
+        //second row
+        map[0, 1].ChangeIngredient(map[0, 0].GetIngredient(), map[0, 0].platformGO);
+        map[1, 1].ChangeIngredient(map[1, 0].GetIngredient(), map[1, 0].platformGO);
+        map[2, 1].ChangeIngredient(map[2, 0].GetIngredient(), map[2, 0].platformGO);
+        map[3, 1].ChangeIngredient(map[3, 0].GetIngredient(), map[3, 0].platformGO);
+
+        //first row
+        map[0, 0].ChangeIngredient(false, null);
+        map[1, 0].ChangeIngredient(false, null);
+        map[2, 0].ChangeIngredient(false, null);
+        map[3, 0].ChangeIngredient(false, null);
+    }
+
 
 }

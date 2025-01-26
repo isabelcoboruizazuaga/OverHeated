@@ -6,7 +6,7 @@ public class PlatformDetector : MonoBehaviour
     {
         if (collision.CompareTag("Platform"))
         {
-            if (gameObject.GetComponentInParent<Rigidbody2D>().velocity.y < 3) //this avoid launching on platforms, player must come 
+            if (gameObject.GetComponentInParent<Rigidbody2D>().velocity.y < 3) //this avoid launching on platforms, player must come from above
             {
                 if (transform.parent.gameObject.name == "Player1")
                 {
