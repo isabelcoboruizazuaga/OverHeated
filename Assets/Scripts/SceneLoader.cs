@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour
+public class SceneSwitcher : MonoBehaviour
 {
-    public string sceneName; // El nombre de la escena a la que quieres hacer la transición
-
-    public void LoadScene()
+    public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
