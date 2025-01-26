@@ -14,6 +14,7 @@ public class PlatformChecker : MonoBehaviour
                 collision.transform.GetComponentInParent<IngredientManager>().DownIngredients();
                 change = false;
                 StartCoroutine(Wait());
+                collision.transform.GetComponentInParent<IngredientManager>().Refill();
             }
         }
     }
