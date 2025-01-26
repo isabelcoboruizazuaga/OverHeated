@@ -11,6 +11,9 @@ public class Player2Movement : MonoBehaviour
     [SerializeField] private bool jump = true;
     private bool doubleJump = true;
 
+    [Header("Sonido")]
+    [SerializeField] private AudioSource audioJump;
+
     private Rigidbody2D rb2D;
     private Vector2 targetVelocity;
     private Vector2 dampVelocity;
@@ -51,12 +54,15 @@ public class Player2Movement : MonoBehaviour
             jump = false;
             rb2D.AddForce(Vector2.up * jumpForce);
             player_Animator.SetTrigger("jump");
+            audioJump.Play();
+
         }
 
         if ((Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Joystick2Button0) || Input.GetKeyUp(KeyCode.KeypadEnter)) && doubleJump)
         {
             doubleJump = false;
             jump = true;
+            audioJump.Play();
         }
     }
 

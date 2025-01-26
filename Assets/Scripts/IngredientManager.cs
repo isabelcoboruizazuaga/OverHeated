@@ -67,7 +67,7 @@ public class IngredientManager : MonoBehaviour
     public void Reafill()
     {
         int aux = 0;
-        for (int i = 0; i < 2 && aux < 3; i++)
+        for (int i = 0; i < 2 && aux < 10; i++)
         {
             aux++;
 

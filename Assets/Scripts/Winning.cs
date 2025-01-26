@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Winning : MonoBehaviour
 {
@@ -17,11 +18,13 @@ public class Winning : MonoBehaviour
             {
                 img1.SetActive(true);
                 img2.SetActive(false);
+                StartCoroutine(Reload());
             }
             if (GameObject.Find("Player2").GetComponent<Collider2D>().enabled)
             {
                 img2.SetActive(true);
                 img1.SetActive(false);
+                StartCoroutine(Reload());
             }
 
         }
@@ -34,6 +37,13 @@ public class Winning : MonoBehaviour
             panelEnd.SetActive(true);
             img2.SetActive(false);
             img1.SetActive(false);
+            StartCoroutine(Reload());
         }
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("01game");
     }
 }
