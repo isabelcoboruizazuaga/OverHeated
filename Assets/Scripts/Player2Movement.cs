@@ -54,7 +54,11 @@ public class Player2Movement : MonoBehaviour
             jump = false;
             rb2D.AddForce(Vector2.up * jumpForce);
             player_Animator.SetTrigger("jump");
-            audioJump.Play();
+            if (!audioJump.isPlaying) audioJump.Play();
+            else
+            {
+                audioJump.Stop();
+            }
 
         }
 
@@ -62,7 +66,11 @@ public class Player2Movement : MonoBehaviour
         {
             doubleJump = false;
             jump = true;
-            audioJump.Play();
+            if (!audioJump.isPlaying) audioJump.Play();
+            else
+            {
+                audioJump.Stop();
+            }
         }
     }
 

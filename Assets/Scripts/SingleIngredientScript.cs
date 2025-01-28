@@ -37,7 +37,7 @@ public class SingleIngredientScript : MonoBehaviour
     }
     public void PlaySound()
     {
-        myAudio.Play();
+        gameObject.GetComponentInChildren<AudioSource>().Play();
     }
 
     public void SetIngredient(bool _ingredient, GameObject _platformGO)
@@ -49,7 +49,8 @@ public class SingleIngredientScript : MonoBehaviour
             {
                 platformGO = _platformGO;
                 Instantiate(_platformGO, transform);
-                myAudio = _platformGO.GetComponent<AudioSource>();
+                myAudio = _platformGO.GetComponent<AudioSource>(); 
+               // PlaySound();
             }
         }
     }

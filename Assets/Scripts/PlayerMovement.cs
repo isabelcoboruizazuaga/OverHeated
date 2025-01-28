@@ -29,12 +29,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Jump();
-        
+
     }
 
     void FixedUpdate()
     {
-        MoveActionP1();       
+        MoveActionP1();
 
         rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, targetVelocity, ref dampVelocity, smoothTime);
     }
@@ -53,7 +53,11 @@ public class PlayerMovement : MonoBehaviour
             jump = false;
             rb2D.AddForce(Vector2.up * jumpForce);
             player_Animator.SetTrigger("jump");
-            audioJump.Play();
+            if (!audioJump.isPlaying) audioJump.Play();
+            else
+            {
+                audioJump.Stop();
+            }
         }
 
         if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0)) && doubleJump)
@@ -61,7 +65,11 @@ public class PlayerMovement : MonoBehaviour
             doubleJump = false;
             jump = true;
             player_Animator.SetTrigger("jump");
-            audioJump.Play();
+            if (!audioJump.isPlaying) audioJump.Play();
+            else
+            {
+                audioJump.Stop();
+            }
         }
     }
 
