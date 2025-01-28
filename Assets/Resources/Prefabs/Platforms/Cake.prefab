@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1440736085249905823}
   - component: {fileID: 2173079490100294367}
   - component: {fileID: 1886240168208209564}
+  - component: {fileID: 6421235015726980146}
   - component: {fileID: 120099267899111230}
   m_Layer: 0
   m_Name: Cake
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4692208192053102796}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2fe5546f775c47d2820aa5e8a715f53, type: 3}
   m_Name: 
@@ -248,6 +249,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.034657, y: 4.266206}
   m_EdgeRadius: 0
+--- !u!114 &6421235015726980146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692208192053102796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7ceaf0799fb074ca73daf085989efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &120099267899111230
 AudioSource:
   m_ObjectHideFlags: 0

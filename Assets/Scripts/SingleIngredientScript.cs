@@ -56,7 +56,10 @@ public class SingleIngredientScript : MonoBehaviour
 
     public void ChangeIngredient(bool _ingredient = false, GameObject _platfomGo = null)
     {
-        if (platformGO != null)
+        DestroyPlatform();
+        SetIngredient(_ingredient, _platfomGo);
+
+        /*if (platformGO != null)
         {
             Destroy(transform.GetChild(0).gameObject);
         }
@@ -75,7 +78,19 @@ public class SingleIngredientScript : MonoBehaviour
                 Instantiate(_platfomGo, transform);
                 myAudio = _platfomGo.GetComponent<AudioSource>();
             }
+        }*/
+    }
+
+    public void DestroyPlatform()
+    {
+        if (platformGO != null)
+        {
+            Destroy(transform.GetChild(0).gameObject);
         }
+
+        ingredient = false;
+        platformGO = null;
+
     }
 
 

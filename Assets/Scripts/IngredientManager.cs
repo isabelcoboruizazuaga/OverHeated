@@ -64,7 +64,7 @@ public class IngredientManager : MonoBehaviour
             else i--;
         }
     }
-    public void Reafill()
+   /* public void Reafill()
     {
         int aux = 0;
         for (int i = 0; i < 2 && aux < 10; i++)
@@ -82,17 +82,25 @@ public class IngredientManager : MonoBehaviour
 
             else i--;
         }
-    }
+    }*/
 
-    
+    private int newPlatAmount=3;
     public void Refill()
     {
-        int randomX = Random.Range(0, width);
-        int randomY = Random.Range(0, 2);
-
-        if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient()) //si es 2 o más hay al menos dos ingredientes en línea
+        int aux = 0;
+        for (int i = 0; i < newPlatAmount && aux < 4; i++)
         {
-            map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
+            aux++;
+
+            int randomX = Random.Range(0, width);
+            int randomY = Random.Range(0, 2);
+
+            if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient())
+            {
+                map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
+                map[randomX, randomY].PlaySound();
+            }
+            else i--;
         }
 
     }
