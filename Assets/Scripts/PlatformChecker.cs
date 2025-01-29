@@ -14,11 +14,10 @@ public class PlatformChecker : MonoBehaviour
                 collision.transform.GetComponentInParent<IngredientManager>().DownIngredients();
                 change = false;
                 StartCoroutine(Wait());
-                collision.transform.GetComponentInParent<IngredientManager>().Refill();
+                StartCoroutine(collision.transform.GetComponentInParent<IngredientManager>().RefillCo());
             }
         }
     }
-
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(0.5f);

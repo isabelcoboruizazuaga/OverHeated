@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class IngredientManager : MonoBehaviour
@@ -58,7 +59,7 @@ public class IngredientManager : MonoBehaviour
 
             if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient()) //si es 2 o más hay al menos dos ingredientes en línea
             {
-                map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
+                map[randomX, randomY].SetIngredient(true, GetRandomPlatform(),true);
             }
 
             else i--;
@@ -97,12 +98,33 @@ public class IngredientManager : MonoBehaviour
 
             if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient())
             {
-                map[randomX, randomY].SetIngredient(true, GetRandomPlatform());
-                map[randomX, randomY].PlaySound();
+                map[randomX, randomY].SetIngredient(true, GetRandomPlatform(),false);
+                map[randomX, randomY].GetComponentInChildren<Animator>().SetTrigger("fall");
+                Debug.Log("Falling: "+ map[randomX, randomY].transform.GetChild(0).name);
             }
             else i--;
         }
 
+    }
+    public IEnumerator RefillCo()
+    {
+        int aux = 0;
+        for (int i = 0; i < newPlatAmount && aux < 4; i++)
+        {
+            aux++;
+
+            int randomX = Random.Range(0, width);
+            int randomY = Random.Range(0, 2);
+
+            if (CheckAround(randomX, randomY) < 2 && !map[randomX, randomY].GetIngredient())
+            {
+                map[randomX, randomY].SetIngredient(true, GetRandomPlatform(), false);
+                map[randomX, randomY].GetComponentInChildren<Animator>().SetTrigger("fall");
+                Debug.Log("Falling: " + map[randomX, randomY].transform.GetChild(0).name);
+                yield return new WaitForSeconds(Random.Range(0.5f,1f));
+            }
+            else i--;
+        }
     }
 
     private int CheckAround(int x, int y)

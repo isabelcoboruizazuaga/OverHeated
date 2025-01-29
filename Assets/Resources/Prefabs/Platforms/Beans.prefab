@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3215457408328675022}
   - component: {fileID: 3606242814386597478}
+  - component: {fileID: 1016468457444914472}
   - component: {fileID: 8490807020911564245}
   - component: {fileID: 4332528256334713026}
   - component: {fileID: -926601926470521791}
+  - component: {fileID: 837047543574619179}
   m_Layer: 0
   m_Name: Beans
   m_TagString: Platform
@@ -87,6 +89,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1016468457444914472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228658255444774859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ec10f434e405e4aa419eca6b5cd4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!68 &8490807020911564245
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -243,3 +257,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &837047543574619179
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228658255444774859}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 856b56419ef66dc4c82e209d318a10ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

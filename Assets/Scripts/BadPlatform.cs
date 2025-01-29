@@ -17,10 +17,10 @@ public class BadPlatform : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(0.5f,2f));
         gameObject.GetComponent<Animator>().SetTrigger("break1");
 
-        yield return new WaitForSeconds(Random.Range(0.2f, 1f));
+        yield return new WaitForSeconds(Random.Range(0.5f, 2f));
         gameObject.GetComponent<Animator>().SetTrigger("total");
 
-        yield return new WaitForSeconds(Random.Range(0.2f, 1f));
+        yield return new WaitForSeconds(0.2f);
         gameObject.GetComponentInParent<SingleIngredientScript>().DestroyPlatform();
 
     }

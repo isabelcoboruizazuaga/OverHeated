@@ -20,27 +20,7 @@ public class SingleIngredientScript : MonoBehaviour
         y = _y;
     }
 
-    public void NewPlatform(GameObject _platformGO)
-    {
-        GameObject platform = Instantiate(_platformGO, transform);
-        // platform.transform.position = new Vector2(transform.position.x, platformSpawn.transform.position.y);
-
-        //platform.GetComponent<Rigidbody2D>().velocity = new Vector3(0,Mathf.Abs(platformSpawn.transform.position.y) + Mathf.Abs(transform.position.y))*-1;
-
-
-        /*if (Mathf.Abs((platform.transform.position.y - transform.position.y)) < 1)
-        {
-            platform.GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
-        }*/
-
-
-    }
-    public void PlaySound()
-    {
-        gameObject.GetComponentInChildren<AudioSource>().Play();
-    }
-
-    public void SetIngredient(bool _ingredient, GameObject _platformGO)
+    public void SetIngredient(bool _ingredient, GameObject _platformGO, bool visible)
     {
         if (!ingredient)
         {
@@ -49,8 +29,8 @@ public class SingleIngredientScript : MonoBehaviour
             {
                 platformGO = _platformGO;
                 Instantiate(_platformGO, transform);
-                myAudio = _platformGO.GetComponent<AudioSource>(); 
-               // PlaySound();
+               // _platformGO.GetComponent<SpriteRenderer>().enabled = visible;
+
             }
         }
     }
@@ -58,28 +38,7 @@ public class SingleIngredientScript : MonoBehaviour
     public void ChangeIngredient(bool _ingredient = false, GameObject _platfomGo = null)
     {
         DestroyPlatform();
-        SetIngredient(_ingredient, _platfomGo);
-
-        /*if (platformGO != null)
-        {
-            Destroy(transform.GetChild(0).gameObject);
-        }
-
-        if (_ingredient == false)
-        {
-            ingredient = false;
-            platformGO = null;
-        }
-        else
-        {
-            if (_platfomGo != null)
-            {
-                ingredient = true;
-                platformGO = _platfomGo;
-                Instantiate(_platfomGo, transform);
-                myAudio = _platfomGo.GetComponent<AudioSource>();
-            }
-        }*/
+        SetIngredient(_ingredient, _platfomGo,true);
     }
 
     public void DestroyPlatform()
