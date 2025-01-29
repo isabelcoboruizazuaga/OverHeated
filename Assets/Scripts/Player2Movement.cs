@@ -74,6 +74,11 @@ public class Player2Movement : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        GameObject.Find("Winning").GetComponent<Winning>().Win(1);
+    }
+
     public void SetJump(bool jump)
     {
         this.jump = jump;
