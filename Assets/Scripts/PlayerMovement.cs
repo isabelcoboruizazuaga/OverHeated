@@ -28,23 +28,12 @@ public class PlayerMovement : MonoBehaviour
         player_Animator = gameObject.GetComponent<Animator>();
     }
 
-    bool menuOpen = false;
     private void Update()
     {
         Jump();
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
-            //This activates the pause
-            if (menuOpen)
-            {
-                GameObject.Find("HUD").GetComponent<MenuController>().CloseMenu();
-                menuOpen = false;
-            }
-            else
-            {
-                GameObject.Find("HUD").GetComponent<MenuController>().OpenMenu();
-                menuOpen = true;
-            }
+            GameObject.Find("HUD").GetComponent<MenuController>().OpenMenu();
         }
     }
 
