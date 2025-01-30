@@ -42,7 +42,7 @@ public class Player2Movement : MonoBehaviour
 
     public void MoveActionP1()
     {
-        p2horizontalInput = Input.GetAxis("Vertical");
+        p2horizontalInput = Input.GetAxis("Horizontal2");
 
         targetVelocity = new Vector2(p2horizontalInput * speed, rb2D.velocity.y);
     }
