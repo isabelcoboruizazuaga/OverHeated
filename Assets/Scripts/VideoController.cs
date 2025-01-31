@@ -10,6 +10,7 @@ public class VideoController : MonoBehaviour
     [SerializeField] private string videoURL = "";
     [SerializeField] private GameObject texture;
     private VideoPlayer videoPlayer;
+    [SerializeField] GameObject VirtualCursor;
 
 
     private void Awake()
@@ -28,6 +29,8 @@ public class VideoController : MonoBehaviour
 
     private void OnVideoPrepared(VideoPlayer source)
     {
+        VirtualCursor.SetActive(false);
+
         videoPlayer.Play();
         videoPlayer.loopPointReached += OnVideoFinished;
     }
