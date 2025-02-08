@@ -4,13 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Velocidad")]
-    [SerializeField] private float speed;
-    [SerializeField] private float smoothTime;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float smoothTime = 0.1f;
 
     [Header("Saltar")]
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpForce = 5f;
     [SerializeField] private bool jump = true;
-    [SerializeField] private bool doubleJump = true;
+    private bool doubleJump = true;
 
     [Header("Sonido")]
     [SerializeField] private AudioSource audioJump;
@@ -18,74 +18,88 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb2D;
     private Vector2 targetVelocity;
     private Vector2 dampVelocity;
-    private float p1horizontalInput;
+    private float horizontalInput;
 
-    Animator player_Animator;
+    private Animator player_Animator;
+    private PlayerInput playerInput;
 
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        player_Animator = gameObject.GetComponent<Animator>();
+        player_Animator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
-    private void Update()
-    {
-        Jump();
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
-        {
-            GameObject.Find("HUD").GetComponent<MenuController>().OpenMenu();
-        }
-    }
 
-    void FixedUpdate()
-    {
-        MoveActionP1();
+    // Ahora la parte de movimiento esta en visual scripting, lo siento :( (podriamos probar a cambiarlo a C# tb)
 
-        rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, targetVelocity, ref dampVelocity, smoothTime);
-    }
+    //void FixedUpdate()
+    //{
+    //    Move();
+    //    rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, targetVelocity, ref dampVelocity, smoothTime);
+    //}
 
-    public void MoveActionP1()
-    {
-        p1horizontalInput = Input.GetAxis("Horizontal");
+    // Manejo del movimiento con New Input System
+    //public void OnMove(InputAction.CallbackContext context)
+    //{
+    //    horizontalInput = context.ReadValue<Vector2>().x;
+    //}
 
-        targetVelocity = new Vector2(p1horizontalInput * speed, rb2D.velocity.y);
-    }
+    //private void Move()
+    //{
 
-    private void Jump()
-    {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && jump)
-        {
-            jump = false;
-            rb2D.AddForce(Vector2.up * jumpForce);
-            player_Animator.SetTrigger("jump");
-            if (!audioJump.isPlaying) audioJump.Play();
-            else
-            {
-                audioJump.Stop();
-            }
-        }
+    //    targetVelocity = new Vector2(horizontalInput * speed, rb2D.velocity.y);
+    //}
 
-        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0)) && doubleJump)
-        {
-            doubleJump = false;
-            jump = true;
-            player_Animator.SetTrigger("jump");
-            if (!audioJump.isPlaying) audioJump.Play();
-            else
-            {
-                audioJump.Stop();
-            }
-        }
-    }
+    // El doble salto ha dejado de funcionar pero ironicamente en el 2o jugador si fufa
+    //public void OnJump()
+    //{
+    //    if (jump)
+    //    {
+    //        jump = false;
+    //        rb2D.AddForce(Vector2.up * jumpForce);
+    //        player_Animator.SetTrigger("jump");
+    //        if (doubleJump)
+    //        {
+    //            doubleJump = false;
+    //            jump = true;
+    //            player_Animator.SetTrigger("jump");
+    //            if (!audioJump.isPlaying) audioJump.Play();
+    //            else
+    //            {
+    //                audioJump.Stop();
+    //            }
+    //        }
+    //        if (!audioJump.isPlaying) audioJump.Play();
+    //        else
+    //        {
+    //            audioJump.Stop();
+    //        }
+
+
+    //    }
+
+    //}
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Platform"))
+    //    {
+    //        jump = true;
+    //        doubleJump = true;
+    //    }
+    //}
 
     public void Die()
     {
         GameObject.Find("Winning").GetComponent<Winning>().Win(2);
     }
+
     public void SetJump(bool jump)
     {
         this.jump = jump;
     }
+
     public void SetDoubleJump(bool doubleJump)
     {
         this.doubleJump = doubleJump;
